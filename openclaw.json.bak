@@ -1,0 +1,14 @@
+{
+  "agents": {
+    "defaults": {
+      "model": "gemini/gemini-1.5-pro",
+      "workspace": "./workspace"
+    }
+  },
+  "channels": {
+    "whatsapp": {
+      "dmPolicy": "open",
+      "allowFrom": ["*"]
+    }
+  }
+}

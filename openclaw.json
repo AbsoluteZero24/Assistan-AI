@@ -1,0 +1,42 @@
+{
+  "plugins": {
+    "allow": [
+      "whatsapp"
+    ]
+  },
+  "web": {
+    "enabled": true
+  },
+  "gateway": {
+    "mode": "local",
+    "port": 18789
+  },
+  "agents": {
+    "defaults": {
+      "model": "google/gemini-2.5-flash",
+      "workspace": "./workspace"
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "gemini": {
+          "model": "gemini-2.5-flash"
+        }
+      }
+    }
+  },
+  "channels": {
+    "whatsapp": {
+      "dmPolicy": "open",
+      "allowFrom": [
+        "*"
+      ],
+      "accounts": {
+        "primary": {
+          "enabled": true
+        }
+      }
+    }
+  }
+}
