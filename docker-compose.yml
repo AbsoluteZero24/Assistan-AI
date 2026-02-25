@@ -4,15 +4,20 @@ services:
     image: openclaw:local
     container_name: openclaw-assistant
     ports:
-      - "9001:18789"
+      - "8001:18789"
     env_file:
       - .env
     environment:
       - NODE_ENV=production
+      - OPENCLAW_CONFIG_PATH=/app/openclaw.json
+      - OPENCLAW_STATE_DIR=/app
     volumes:
-      # Agar konfigurasi dan data tersimpan di komputer host
+      # Mounting folder penting untuk persistensi data dan session
       - ./openclaw.json:/app/openclaw.json
       - ./workspace:/app/workspace
+      - ./credentials:/app/credentials
+      - ./agents:/app/agents
+      - ./identity:/app/identity
+      - ./logs:/app/logs
     restart: unless-stopped
-    # Menggunakan --bind 0.0.0.0 agar bisa diakses dari luar container melalui port 9001
-    command: [ "node", "openclaw.mjs", "gateway", "--allow-unconfigured", "--bind", "0.0.0.0", "--port", "18789" ]
+    command: [ "node", "openclaw.mjs", "gateway", "--allow-unconfigured", "--bind", "lan", "--port", "18789" ]

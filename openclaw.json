@@ -9,7 +9,11 @@
   },
   "gateway": {
     "mode": "local",
-    "port": 18789
+    "port": 18789,
+    "controlUi": {
+      "dangerouslyAllowHostHeaderOriginFallback": true,
+      "dangerouslyDisableDeviceAuth": true
+    }
   },
   "agents": {
     "defaults": {
@@ -28,13 +32,13 @@
   },
   "channels": {
     "whatsapp": {
-      "dmPolicy": "open",
-      "allowFrom": [
-        "*"
-      ],
       "accounts": {
         "primary": {
-          "enabled": true
+          "enabled": true,
+          "dmPolicy": "open",
+          "allowFrom": [
+            "*"
+          ]
         }
       }
     }
